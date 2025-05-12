@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Listagem de Usuários</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Usuários Cadastrados</h1>
+
+        <table border="1" width="100%">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Usuário</th>
+                    <th>Perfil</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="tabelaUsuarios">
+                <!-- Conteúdo inserido via JavaScript -->
+            </tbody>
+        </table>
+
+        <br>
+        <div class="botoes-container">
+            <a href="usuario.html" style="margin-right: 20px; background: #1b66ff; color:white; padding:10px 20px">Cadastrar Novo</a>
+            <a href="administrador-modulo.html" style="background: #006603; color:white; padding:10px 20px">Voltar</a>
+        </div>
+    </div>
+
+    <footer>Exata Locadora de Equipamentos!</footer>
+
+    <script>
+        function carregarUsuarios() {
+            const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+            const tabela = document.getElementById("tabelaUsuarios");
+            tabela.innerHTML = "";
+
+            usuarios.forEach((usuario, index) => {
+                tabela.innerHTML += `
+                    <tr>
+                        <td>${index + 1}</td>
+                        <td>${usuario.usuario}</td>
+                        <td>${usuario.perfil === "A" ? "Administrador" : "Operador"}</td>
+                        <td>
+                            <button onclick="removerUsuario(${index})">Remover</button>
+                        </td>
+                    </tr>
+                `;
+            });
+        }
+
+        function removerUsuario(index) {
+            if (confirm("Deseja realmente remover este usuário?")) {
+                let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+                usuarios.splice(index, 1);
+                localStorage.setItem("usuarios", JSON.stringify(usuarios));
+                carregarUsuarios();
+            }
+        }
+
+        window.onload = carregarUsuarios;
+    </script>
+</body>
+
+</html>

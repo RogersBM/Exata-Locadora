@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Funcionários</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+
+</head>
+
+<body>
+    <h1>Funcionários</h1>
+    <a href="/funcionarios/novo">Novo Funcionário</a>
+    <a href="index.html" class="botao-voltar">Voltar</a>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>Identidade</th>
+                <th>Contato</th>
+                <th>Endereço</th>
+                <th>Cargo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="funcionario : ${funcionarios}">
+                <td th:text="${funcionario.nome}">Nome</td>
+                <td th:text="${funcionario.cpf}">CPF</td>
+                <td th:text="${funcionario.identidade}">Identidade</td>
+                <td th:text="${funcionario.contato}">Contato</td>
+                <td th:text="${funcionario.endereco}">Endereço</td>
+                <td th:text="${funcionario.cargo}">Cargo</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>

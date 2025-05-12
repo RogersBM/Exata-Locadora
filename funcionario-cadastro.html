@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastrar Funcionário</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body>
+
+    <h1>Cadastrar Funcionário</h1>
+
+    <div class="container">
+        <form>
+            <label for="nome">Nome Completo</label>
+            <input type="text" id="nome" name="nome">
+
+            <label for="cpf">CPF</label>
+            <input type="text" id="cpf" name="cpf">
+
+            <label for="identidade">Identidade</label>
+            <input type="text" id="identidade" name="identidade">
+
+            <label for="contato">Contato</label>
+            <input type="text" id="contato" name="contato">
+
+            <label for="endereco">Endereço</label>
+            <input type="text" id="endereco" name="endereco">
+
+            <label for="cargo">Cargo</label>
+            <select id="cargo" name="cargo">
+                <option value="">Selecione</option>
+                <option value="atendente">Atendente</option>
+                <option value="gerente">Gerente</option>
+                <option value="auxiliar">Auxiliar</option>
+            </select>
+
+            <div class="buttons">
+                <button type="submit" style="background:#1b66ff; color:white; padding:10px 20px;">Cadastrar</button>
+                <button type="reset"
+                    style="margin-left:20px; background:#662c00; color:white; padding:10px 20px">Limpar</button>
+                <a href="index.html" style="margin-left:20px; background:#006603; color:white; padding:10px 20px;"
+                    class="botao-voltar">Voltar</a>
+
+            </div>
+        </form>
+    </div>
+
+    <footer>Exata Locadora de Equipamentos!</footer>
+
+</body>
+
+</html>

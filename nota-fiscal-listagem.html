@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastrar Nota Fiscal</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+
+</head>
+
+<body>
+    <h1 style="text-align:center; color:#660066;">Listar Nota Fiscal</h1>
+    <div class="container">
+        <h1>Listagem de Notas Fiscais</h1>
+        <table border="1" width="100%">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Data</th>
+                    <th>Valor (R$)</th>
+                    <th>Cliente</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>001</td>
+                    <td>2025-05-08</td>
+                    <td>150.00</td>
+                    <td>Vagner Cardoso Filho</td>
+                </tr>
+                <tr>
+                    <td>002</td>
+                    <td>2025-05-09</td>
+                    <td>300.00</td>
+                    <td>Vanessa Ferreira</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
+    <h1>Notas Fiscais</h1>
+    <a href="/notasfiscais/novo">Nova Nota Fiscal</a>
+    <table border="1">
+        <tr>
+            <th>Código</th>
+            <th>Valor</th>
+        </tr>
+        <tr th:each="nota : ${notasFiscais}">
+            <td th:text="${nota.codigo}">Código</td>
+            <td th:text="${nota.valor}">Valor</td>
+        </tr>
+    </table>
+</body>

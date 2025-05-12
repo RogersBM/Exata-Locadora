@@ -1,0 +1,35 @@
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <title>Listar Cargos</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js"></script>
+        
+    <body>
+        <div class="container">
+            <h1>Cargos</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome do Cargo</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr th:each="cargo : ${cargos}">
+                        <td th:text="${cargo.nome}">Nome do Cargo</td>
+                    </tr>
+                </tbody>
+            </table>
+            <a href="/cargos/novo">Novo Cargo</a>
+
+
+            <div div class="buttons">
+                <button type="submit" style="background:#1b66ff; color:white; padding:10px 20px;">Cadastrar</button>
+                <button type="reset" style="margin-left:20px; background:#662c00; color:white; padding:10px 20px">Limpar</button>
+                <a href="index.html" style="margin-left:20px; background:#006603; color:white; padding:10px 20px;" class="botao-voltar">Voltar</a>
+            </div>
+            <footer>Exata Locadora de Equipamentos!</footer>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Gerenciar Usuários</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Usuários</h1>
+
+        <form id="formCadastroUsuario">
+            <label for="usuario">Usuário:</label>
+            <input type="text" id="usuario" name="usuario" required>
+
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" name="senha" required>
+
+            <label for="perfil">Perfil:</label>
+            <select id="perfil" name="perfil" required>
+                <option value="A">Administrador</option>
+                <option value="O">Operador</option>
+            </select>
+
+            <button type="submit">Cadastrar</button>
+        </form>
+        <br>
+        <div class="botoes-container">
+            <a href="login.html" style="margin-left:20px; background:#662c00; color:white; padding:10px 20px"
+                class="botao-sair">Sair</a>
+            <a href="usuario-listagem.html"
+                style="margin-left:20px; background:#c506cc; color:white; padding:10px 20px;" class="botao-voltar">Lista
+                de Usuários</a>
+            <a href="administrador-modulo.html"
+                style="margin-left:20px; background:#006603; color:white; padding:10px 20px;"
+                class="botao-voltar">Voltar</a>
+        </div>
+    </div>
+
+    <footer>Exata Locadora de Equipamentos!</footer>
+
+    <script>
+        const API_URL = "/api/usuarios";
+
+        async function carregarUsuarios() {
+            const resp = await fetch(API_URL);
+            const usuarios = await resp.json();
+            const container = document.getElementById("usuarios");
+            container.innerHTML = "";
+
+            usuarios.forEach(u => {
+                const div = document.createElement("div");
+                div.innerHTML = `
+          <p><strong>ID:</strong> ${u.id} - <strong>Nome:</strong> ${u.nome} - <strong>Usuário:</strong> ${u.usuario}
+          <button onclick="editarUsuario(${u.id}, '${u.nome}', '${u.usuario}')">Editar</button>
+          <button onclick="removerUsuario(${u.id})">Remover</button></p>
+        `;
+                container.appendChild(div);
+            });
+        }
+
+        async function salvarUsuario(event) {
+            event.preventDefault();
+
+            const id = document.getElementById("id").value;
+            const nome = document.getElementById("nome").value;
+            const usuario = document.getElementById("usuario").value;
+            const senha = document.getElementById("senha").value;
+
+            const metodo = id ? "PUT" : "POST";
+            const url = id ? `${API_URL}/${id}` : API_URL;
+
+            await fetch(url, {
+                method: metodo,
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ id, nome, usuario, senha })
+            });
+
+            document.getElementById("formUsuario").reset();
+            carregarUsuarios();
+        }
+
+        async function removerUsuario(id) {
+            if (confirm("Deseja realmente excluir este usuário?")) {
+                await fetch(`${API_URL}/${id}`, { method: "DELETE" });
+                carregarUsuarios();
+            }
+        }
+
+        function editarUsuario(id, nome, usuario) {
+            document.getElementById("id").value = id;
+            document.getElementById("nome").value = nome;
+            document.getElementById("usuario").value = usuario;
+        }
+
+        document.getElementById("formUsuario").addEventListener("submit", salvarUsuario);
+
+        carregarUsuarios();
+    </script>
+
+</body>
+
+</html>

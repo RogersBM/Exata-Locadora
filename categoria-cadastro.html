@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Categoria</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Cadastrar Categoria</h1>
+
+    <div class="container">
+        <form id="formCategoria">
+            <label for="categoria">Nome da Categoria:</label>
+            <select id="categoria" name="categoria" required>
+                <option value="">Selecione</option>
+                <option value="Concretagem">Concretagem</option>
+                <option value="Compactação">Compactação</option>
+                <option value="Ferramenta Elétrica">Ferramenta Elétrica</option>
+                <option value="Limpeza">Limpeza</option>
+                <option value="Máquina de Solda">Máquina de Solda</option>
+                <option value="Perfuração">Perfuração</option>
+                <option value="Polimento de Piso">Polimento de Piso</option>
+                <option value="Roçadeira">Roçadeira</option>
+                <option value="Serras">Serras</option>
+            </select>
+
+            <label for="valor">Valor (R$):</label>
+            <input type="number" id="valor" name="valor" step="0.01" required placeholder="Ex: 150.00">
+
+            <br><br>
+            <button type="submit "style="background:#1b66ff; color:white; padding:10px 20px">Cadastrar</button>
+            <button type="reset "style="margin-left:20px; background:#662c00; color:white; padding:10px 20px">Limpar</button>
+            <a href="index.html" style="margin-left:20px; background:#006603; color:white; padding:10px 20px"
+                    class="botao-voltar">Voltar</a>
+            <a href="categoria-listagem.html">Listar Categorias</a>
+        </form>
+    </div>
+
+    <footer>Exata Locadora de Equipamentos!</footer>
+
+    <script>
+        document.getElementById("formCategoria").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const nomeCategoria = document.getElementById("categoria").value;
+            const valorCategoria = document.getElementById("valor").value;
+
+            if (!nomeCategoria || !valorCategoria || parseFloat(valorCategoria) <= 0) {
+                alert("Preencha todos os campos corretamente.");
+                return;
+            }
+
+            salvarCategoria(nomeCategoria, valorCategoria);
+            alert("Categoria cadastrada com sucesso!");
+            this.reset();
+        });
+
+        function salvarCategoria(nome, valor) {
+            let categorias = JSON.parse(localStorage.getItem("categorias")) || [];
+
+            const novaCategoria = {
+                id: categorias.length + 1,
+                nome: nome,
+                descricao: `Valor: R$ ${parseFloat(valor).toFixed(2)}`
+            };
+
+            categorias.push(novaCategoria);
+            localStorage.setItem("categorias", JSON.stringify(categorias));
+        }
+    </script>
+</body>
+</html>

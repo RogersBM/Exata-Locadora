@@ -1,0 +1,207 @@
+/* Reset básico */
+body,
+h1,
+h2,
+h3,
+p,
+label,
+input,
+button,
+a,
+select,
+textarea {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* Fundo e texto padrão */
+body {
+  background: linear-gradient(to bottom, #d2756a, #a97878);
+  color: #333;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Containers principais */
+.container {
+  max-width: 700px;
+  margin: 40px auto;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Títulos */
+h1,
+h2 {
+  color: purple;
+  margin-bottom: 30px;
+}
+
+/* Formulários */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: left;
+}
+
+label {
+  font-weight: bold;
+}
+
+/* Inputs e selects */
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
+select,
+textarea {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 100%;
+  font-size: 16px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #a020f0;
+  background-color: #f5ebff;
+  outline: none;
+}
+
+/* Botões */
+button,
+.botao-voltar,
+.botao-sair,
+a.botao {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.botao {
+    display: inline-block;
+    background-color: purple;
+    color: white;
+    padding: 25px 20px;
+    text-align: center;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 18px;
+    transition: background 0.3s;
+  }
+
+/* Botões principais */
+button[type="submit"],
+.cadastrar {
+  background-color: purple;
+  color: white;
+}
+
+button[type="reset"],
+.limpar {
+  background-color: #e8c1ff;
+  color: #222;
+}
+
+.botoes-inferiores {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.botao-sair {
+  background-color: #de0bf1;
+  color: white;
+  padding: 10px 20px;
+  border: 2px solid #de0bf1;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.botao-voltar {
+  background-color: #006603;
+  color: white;
+  padding: 10px 20px;
+  border: 2px solid #006603;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.botao-voltar.padrao {
+  background-color: white;
+  color: purple;
+  border: 2px solid purple;
+}
+
+/* Menu de opções (painel) */
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.menu a {
+  background-color: purple;
+  color: white;
+  padding: 25px 40px;
+  border-radius: 10px;
+  text-decoration: none;
+  width: 240px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+}
+
+.menu a:hover,
+button:hover,
+.botao-voltar:hover,
+.botao-sair:hover {
+  opacity: 0.9;
+}
+
+/* Tabelas */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th,
+td {
+  padding: 12px;
+  border: 1px solid #ccc;
+}
+
+th {
+  background-color: #660066;
+  color: white;
+}
+
+td {
+  background-color: #f7f0ff;
+}
+
+
+footer {
+  margin-top: 40px;
+  font-size: 20px;
+  font-size: bold
+  color: rgba(216, 31, 31, 0.7);
+}

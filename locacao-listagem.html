@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Aluguéis</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+
+</head>
+
+<body>
+    <h1>Aluguéis Cadastrados</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Cliente</th>
+                <th>Equipamento</th>
+                <th>Funcionário</th>
+                <th>Data Início</th>
+                <th>Data Retorno</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="aluguel : ${alugueis}">
+                <td th:text="${aluguel.cliente.nome}">Cliente</td>
+                <td th:text="${aluguel.equipamento.nome}">Equipamento</td>
+                <td th:text="${aluguel.funcionario.nome}">Funcionário</td>
+                <td th:text="${#dates.format(aluguel.dataInicio, 'dd/MM/yyyy')}">Início</td>
+                <td th:text="${#dates.format(aluguel.dataRetorno, 'dd/MM/yyyy')}">Retorno</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="botoes-rodape">
+        <a href="/alugueis/novo">Novo Aluguel</a>
+        <a href="index.html" class="botao-voltar">Voltar</a>
+        <a href="login.html" class="botao-sair">Sair</a>
+    </div>
+
+</body>
+
+</html>

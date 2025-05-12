@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Equipamento</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+
+</head>
+
+<body>
+    <h2>Cadastro de Equipamento</h2>
+
+    <form id="formEquipamento">
+        <label for="nome">Nome do Equipamento:</label>
+        <input type="text" id="nome" name="nome" required placeholder="Ex: Furadeira elétrica">
+
+        <label for="descricao">Descrição:</label>
+        <textarea id="descricao" name="descricao" required placeholder="Informe detalhes do equipamento"></textarea>
+
+        <label for="categoria">Categoria:</label>
+        <select id="categoria" name="categoria" required>
+            <option value="">Selecione...</option>
+            <option value="Construção">Construção</option>
+            <option value="Jardinagem">Jardinagem</option>
+            <option value="Limpeza">Limpeza</option>
+            <option value="Outros">Outros</option>
+        </select>
+
+        <!-- Campo oculto para status 'alugado' como 'N' -->
+        <input type="hidden" id="alugado" name="alugado" value="N">
+
+        <div div class="buttons">
+            <button type="submit" style="background:#1b66ff; color:white; padding:10px 20px;">Cadastrar</button>
+            <button type="reset"
+                style="margin-left:20px; background:#662c00; color:white; padding:10px 20px">Limpar</button>
+            <a href="equipamento-listagem.html"
+                style="margin-left:20px; background:#c506cc; color:white; padding:10px 20px;" class="botao-voltar">Lista
+                de Equipamentos</a>
+            <a href="index.html" style="margin-left:20px; background:#006603; color:white; padding:10px 20px;"
+                class="botao-voltar">Voltar</a>
+        </div>
+    </form>
+
+    <script>
+        document.getElementById("formEquipamento").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const nome = document.getElementById("nome").value.trim();
+            const descricao = document.getElementById("descricao").value.trim();
+            const categoria = document.getElementById("categoria").value;
+
+            if (!nome || !descricao || !categoria) {
+                alert("Preencha todos os campos!");
+                return;
+            }
+
+            alert("Equipamento cadastrado com sucesso!");
+
+            // Limpa os campos
+            this.reset();
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <title>Cadastro de Cargo</title>
+        <link rel="stylesheet" href="style.css">
+
+        
+    </head>
+    <body>
+        <div class="container">
+            <h2>Cadastro de Cargo</h2>
+
+            <form id="formCargo">
+                <label for="cargo">Nome do Cargo:</label>
+                <input type="text" id="cargo" name="cargo" required placeholder="Ex: Gerente">
+
+                <div div class="buttons">
+                    <button type="submit" style="background:#1b66ff; color:white; padding:10px 20px;">Cadastrar</button>
+                    <button type="reset" style="margin-left:20px; background:#662c00; color:white; padding:10px 20px">Limpar</button>
+                    <a href="administrador-modulo.html" style="margin-left:20px; background:#006603; color:white; padding:10px 20px;" class="botao-voltar">Voltar</a>
+                </div>
+
+            </form>
+
+        </div>
+
+        <script>
+            const formCargo = document.getElementById("formCargo");
+
+            formCargo.addEventListener("submit", function (e) {
+                e.preventDefault();
+
+                const cargo = document.getElementById("cargo").value.trim();
+
+                if (!cargo) {
+                    alert("Por favor, informe o nome do cargo.");
+                    return;
+                }
+
+                // Simulação de cadastro
+                alert("Cargo cadastrado com sucesso!");
+
+                // Resetando formulário após sucesso
+                formCargo.reset();
+            });
+
+            // Botão de limpar
+            document.getElementById("limpar").addEventListener("click", () => {
+                document.getElementById("cargo").value = "";
+            });
+        </script>
+
+        <footer>Exata Locadora de Equipamentos!</footer>
+    </body>
+</html>

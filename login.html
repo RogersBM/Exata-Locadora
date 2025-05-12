@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login do Sistema</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+
+</head>
+
+<header class="header-full">
+    <div class="header-container">
+        <!-- Caixa para a Logo -->
+        <div class="logo-container">
+            <img style="text-align: left;" src="./img/construcao_civil.png">
+        </div>
+        <!-- Caixa para o título e subtítulo -->
+        <div class="titulo-container">
+            <H1 class="titulo">Exata Locadora de Equipamentos</H1>
+        </div>
+        
+    </div>
+
+
+</header>
+
+<body>
+    <div class="login-container">
+        <h2>Acesso ao Sistema</h2>
+        <form id="formLogin">
+            <label for="usuario">Usuário:</label>
+            <input type="text" id="usuario" name="usuario" required>
+
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" name="senha" required>
+
+            <div class="btn-group">
+                <button type="submit">Entrar</button>
+                <button type="submit" style="background:#1b66ff; color:white; padding:10px 20px;">Cadastrar</button>
+                <button type="button" class="btn-secondary" onclick="sair()">Sair</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const usuarios = [
+            { usuario: "admin", senha: "123", perfil: "A" },
+            { usuario: "operador", senha: "456", perfil: "O" },
+            { usuario: "vendedor", senha: "789", perfil: "O" }
+        ];
+
+        function buscarUsuario(usuario, senha) {
+            return usuarios.find(u => u.usuario === usuario && u.senha === senha);
+        }
+
+        function cadastrar() {
+            alert("Você será redirecionado para a tela de cadastro.");
+            // window.location.href = "cadastro.html";
+        }
+
+        function sair() {
+            if (confirm("Deseja realmente sair?")) {
+                window.close();
+            }
+        }
+
+        document.getElementById("formLogin").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const usuario = document.getElementById("usuario").value;
+            const senha = document.getElementById("senha").value;
+
+            if (usuario === "" || senha === "") {
+                alert("Todos os campos devem ser preenchidos.");
+                return;
+            }
+
+            const user = buscarUsuario(usuario, senha);
+
+            if (user) {
+                if (user.perfil === "A") {
+                    alert("Seja bem-vindo(a), ADMINISTRADOR!");
+                    window.location.href = "administrador-modulo.html";
+                } else if (user.perfil === "O") {
+                    alert("Seja bem-vindo(a), OPERADOR!");
+                    window.location.href = "operador-modulo.html";
+                }
+            } else {
+                alert("Usuário ou senha inválidos.\nCadastre um novo usuário.");
+                document.getElementById("usuario").value = "";
+                document.getElementById("senha").value = "";
+                document.getElementById("usuario").focus();
+            }
+        });
+    </script>
+</body>
+
+</html>

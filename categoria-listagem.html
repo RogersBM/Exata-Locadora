@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Listagem de Categorias</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Listagem de Categorias</h1>
+
+    <div class="container">
+        <table border="1" width="100%">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Descrição</th>
+                </tr>
+            </thead>
+            <tbody id="listaCategorias">
+                <!-- Conteúdo gerado pelo JavaScript -->
+            </tbody>
+        </table>
+        <br>
+        <a href="categoria-cadastro.html">Cadastrar Nova Categoria</a>
+    </div>
+
+    <footer>Exata Locadora de Equipamentos!</footer>
+
+    <script>
+        window.onload = function () {
+            const lista = document.getElementById("listaCategorias");
+            const categorias = JSON.parse(localStorage.getItem("categorias")) || [];
+
+            lista.innerHTML = "";
+
+            categorias.forEach(cat => {
+                lista.innerHTML += `
+                    <tr>
+                        <td>${cat.id}</td>
+                        <td>${cat.nome}</td>
+                        <td>${cat.descricao}</td>
+                    </tr>
+                `;
+            });
+        };
+    </script>
+</body>
+</html>

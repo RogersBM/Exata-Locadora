@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Finalizar Aluguel</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <h1>Finalizar Aluguel</h1>
+
+    <div class="container">
+        <form class="formulario-finalizar">
+            <label for="cliente">Cliente:</label>
+            <select id="cliente" required>
+                <option value="">Selecione</option>
+                <option>Cliente 1</option>
+                <option>Cliente 2</option>
+            </select>
+
+            <label for="equipamento">Equipamento:</label>
+            <select id="equipamento" required>
+                <option value="">Selecione</option>
+                <option>Escavadeira</option>
+                <option>Betoneira</option>
+            </select>
+
+            <label for="inicio">Data de Início do Aluguel:</label>
+            <input type="date" id="inicio" required>
+
+            <label for="retorno">Data de Retorno:</label>
+            <input type="date" id="retorno" required>
+
+            <label for="notaFiscal">Nota Fiscal:</label>
+            <select id="notaFiscal" required>
+                <option value="">Selecione</option>
+                <option>NF-001</option>
+                <option>NF-002</option>
+            </select>
+
+            <label for="responsavel">Responsável:</label>
+            <select id="responsavel" required>
+                <option value="">Selecione</option>
+                <option>João</option>
+                <option>Maria</option>
+            </select>
+
+            <div class="buttons">
+                <button type="submit" style="background:#1b66ff; color:white; padding:10px 20px;"
+                    class="cadastrar">Finalizar</button>
+                <button type="reset"
+                    style="margin-left:20px; background:#662c00; color:white; padding:10px 20px">Limpar</button>
+                <a href="index.html" style="margin-left:20px; background:#006603; color:white; padding:10px 20px;"
+                    class="botao-voltar">Voltar</a>
+            </div>
+
+        </form>
+    </div>
+
+    <footer>Exata Locadora de Equipamentos!</footer>
+</body>
+
+</html>

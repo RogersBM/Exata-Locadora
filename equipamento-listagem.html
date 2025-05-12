@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Controle de Equipamentos</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+
+</head>
+
+<body>
+    <div class="contaniner">
+        <h1>Lista de Equipamentos</h1>
+        <table border="1">
+            <tr>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Categoria</th>
+                <th>Status</th>
+            </tr>
+
+            <tr th:each="equip : ${equipamento}">
+                <td th:text="${equip.nome}">Nome</td>
+                <td th:text="${equip.descricao}">Descrição</td>
+                <td th:text="${equip.categoria.nome}">Categoria</td>
+                <td th:text="${equip.alugado ? 'Alugado' : 'Disponível'}">Status</td>
+            </tr>
+        </table>
+        <br>
+        <div div class="buttons">
+            <a href="equipamento-cadastro.html"
+                style="margin-left:20px; background:#006603; color:white; padding:10px 20px;"
+                class="botao-voltar">Cadastrar Equipamento</a>
+            <a href="index.html" style="margin-left:20px; background:#006603; color:white; padding:10px 20px;"
+                class="botao-voltar">Voltar</a>
+        </div>
+        <footer>Exata Locadora de Equipamentos!</footer>
+    </div>
+</body>

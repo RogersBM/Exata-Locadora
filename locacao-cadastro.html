@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastrar Aluguel</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Cadastrar Aluguel</h1>
+        <form th:action="@{/alugueis}" th:object="${aluguel}" method="post">
+
+            <label for="cliente">Cliente</label>
+            <select th:field="*{cliente}" id="cliente" required>
+                <option value="" disabled selected>Selecione o cliente</option>
+                <option th:each="cliente : ${clientes}" th:value="${cliente.id}" th:text="${cliente.nome}"></option>
+            </select>
+
+            <label for="equipamento">Equipamento</label>
+            <select th:field="*{equipamento}" id="equipamento" required>
+                <option value="" disabled selected>Selecione o equipamento</option>
+                <option th:each="equip : ${equipamentos}" th:value="${equip.id}" th:text="${equip.nome}"></option>
+            </select>
+
+            <label for="funcionario">Funcionário</label>
+            <select th:field="*{funcionario}" id="funcionario" required>
+                <option value="" disabled selected>Selecione o funcionário</option>
+                <option th:each="func : ${funcionarios}" th:value="${func.id}" th:text="${func.nome}"></option>
+            </select>
+
+            <label for="dataInicio">Data de Início</label>
+            <input type="date" th:field="*{dataInicio}" id="dataInicio" required>
+            <br>
+
+            <div div class="buttons">
+                <button type="submit" style="background:#1b66ff; color:white; padding:10px 20px;">Cadastrar</button>
+                <button type="reset"
+                    style="margin-left:20px; background:#662c00; color:white; padding:10px 20px">Limpar</button>
+                <a href="index.html" style="margin-left:20px; background:#006603; color:white; padding:10px 20px;"
+                    class="botao-voltar">Voltar</a>
+            </div>
+        </form>
+
+    </div>
+</body>
+
+</html>
