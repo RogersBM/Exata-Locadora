@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Lista de Funcionários</title>
+        <link rel="stylesheet" th:href="@{/css/style.css}">
+        <script th:src="@{/js/script.js}"></script>
+    </head>
+
+    <body>
+        <div class="container">
+            <h1>Lista de Funcionários</h1>
+            <div class="tabela-container">
+                <table border="1">
+                    <thead>
+                        <tr><th>ID</th><th>Nome</th><th>CPF</th><th>Identidade</th><th>Contato</th><th>Endereço</th><th>Cargo</th><th>Ações</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="funcionario : ${funcionarios}">
+                            <td th:text="${funcionario.id}">ID</td>
+                            <td th:text="${funcionario.nome}">Nome</td>
+                            <td th:text="${funcionario.cpf}">CPF</td>
+                            <td th:text="${funcionario.identidade}">Identidade</td>
+                            <td th:text="${funcionario.contato}"></td>
+                            <td th:text="${funcionario.endereco}">Endereço</td>
+                            <td th:text="${funcionario.cargo.nome}">Cargo</td>
+                            <td>
+                                <a th:href="@{'/funcionarios/editar/' + ${funcionario.id}}">Editar</a> |
+                                <a th:href="@{'/funcionarios/excluir/' + ${funcionario.id}}" 
+                                   onclick="return confirm('Deseja realmente excluir?')">Excluir</a>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+                <div class="buttons">
+                    <a th:href="@{/funcionarios/cadastro}" style="background:#1b66ff; color:white; padding:10px 20px;">Cadastrar</a>
+                    <a th:href="@{/index}" style="margin-left:20px; background:#006603; color:white; padding:10px 20px;"
+                       class="botao-voltar">Voltar</a>
+                </div>
+            </div>
+        </div>
+        <footer>Exata Locadora de Equipamentos!</footer>
+    </body>
+
+</html>

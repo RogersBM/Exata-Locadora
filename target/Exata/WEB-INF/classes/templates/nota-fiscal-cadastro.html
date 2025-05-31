@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+
+    <head>
+        <meta charset="UTF-8">
+        <title th:text="${notaFiscal.id != null} ? 'Editar Nota Fiscal' : 'Cadastrar Nota Fiscal'">Nota Fiscal</title>
+        <link rel="stylesheet" th:href="@{/css/style.css}">
+        <script th:src="@{/js/script.js}"></script>
+    </head>
+
+    <body>
+        <div class="container">
+            <h1 th:text="${notaFiscal.id != null} ? 'Editar Nota Fiscal' : 'Cadastrar Nota Fiscal'" style="text-align:center; color:#660066;"></h1>
+
+            <form th:action="@{/notas-fiscais/gravar}" th:object="${notaFiscal}" method="post">
+                <input type="hidden" th:field="*{id}" />
+
+                <!-- Número da Nota -->
+                <label for="numero">Número:</label>
+                <input type="text" id="numero" th:field="*{numero}" required />
+                <div class="erro" th:if="${#fields.hasErrors('numero')}" th:errors="*{numero}"></div>
+
+                <!-- Valor -->
+                <label for="valor">Valor:</label>
+                <input type="number" id="valor" th:field="*{valor}" step="0.01" required />
+                <div class="erro" th:if="${#fields.hasErrors('valor')}" th:errors="*{valor}"></div>
+
+                <!-- Data de Emissão -->
+                <label for="dataEmissao">Data de Emissão:</label>
+                <input type="date" id="dataEmissao" th:field="*{dataEmissao}" required />
+                <div class="erro" th:if="${#fields.hasErrors('dataEmissao')}" th:errors="*{dataEmissao}"></div>
+
+                <!-- Botões -->
+                <div class="buttons">
+                    <button type="submit" style="background:#1b66ff; color:white; padding:10px 20px;">
+                        <span th:text="${notaFiscal.id != null} ? 'Atualizar' : 'Cadastrar'">Cadastrar</span>
+                    </button>
+
+                    <button type="reset" style="margin-left:20px; background:#662c00; color:white; padding:10px 20px;">
+                        Limpar
+                    </button>
+
+                    <a th:href="@{/notas-fiscais/lista}" style="margin-left:20px; background:#c506cc; color:white; padding:10px 20px;">
+                        Listar Notas
+                    </a>
+
+                    <a th:href="@{/admin-home}" style="margin-left:20px; background:#006603; color:white; padding:10px 20px;">
+                        Voltar
+                    </a>
+                </div>
+            </form>
+        </div>
+
+        <footer>Exata Locadora de Equipamentos!</footer>
+    </body>
+
+</html>

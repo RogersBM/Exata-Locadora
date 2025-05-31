@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Cadastro de Equipamento</title>
+        <link rel="stylesheet" th:href="@{/css/style.css}">
+        <script th:src="@{/js/script.js}"></script>
+    </head>
+
+    <body>
+        <div class="container">
+            <h2>Cadastro de Equipamento</h2>
+            <form th:action="@{/equipamentos/gravar}" th:object="${equipamento}" method="post">
+                <input type="hidden" th:field="*{id}" />
+
+                <label>Nome:</label>
+                <input type="text" th:field="*{nome}" required />
+                <div class="erro" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></div>
+
+                <label>Descrição:</label>
+                <textarea th:field="*{descricao}" required></textarea>
+                <div class="erro" th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}"></div>
+
+                <label>Categoria:</label>
+                <select th:field="*{categoria.id}" required>
+                    <option value="" disabled selected>Selecione...</option>
+                    <th:block th:if="${categorias != null}">
+                        <option th:each="cat : ${categorias}" th:value="${cat.id}" th:text="${cat.nome}"></option>
+                    </th:block>
+                </select>
+                <div class="erro" th:if="${#fields.hasErrors('categoria.id')}" th:errors="*{categoria.id}"></div>
+                
+                <label>Valor (R$):</label>
+                <input type="number" th:field="*{valor}" required step="0.01" min="0.01" />
+                <div th:if="${#fields.hasErrors('valor')}" class="erro" th:errors="*{valor}"></div>
+
+                <label>Alugado:</label>
+                <select th:field="*{alugado}" required>
+                    <option value="">Selecione...</option>
+                    <option value="S">Sim</option>
+                    <option value="N">Não</option>
+                </select>
+                <div class="erro" th:if="${#fields.hasErrors('alugado')}" th:errors="*{alugado}"></div>
+
+                <div class="buttons">
+                    <button type="submit" style="background:#1b66ff; color:white; padding:10px 20px;">Cadastrar</button>
+                    <button type="reset" style="margin-left:20px; background:#662c00; color:white; padding:10px 20px">Limpar</button>
+                    <a th:href="@{/equipamentos/lista}" style="margin-left:20px; background:#c506cc; color:white; padding:10px 20px;">Lista de Equipamentos</a>
+                    <a th:href="@{/index}" style="margin-left:20px; background:#006603; color:white; padding:10px 20px;">Voltar</a>
+                </div>
+            </form>
+        </div>
+        <footer>Exata Locadora de Equipamentos!</footer>
+    </body>
+
+</html>

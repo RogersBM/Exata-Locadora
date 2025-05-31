@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Módulo Operador</title>
+        <link rel="stylesheet" th:href="@{/css/style.css}">
+        <script th:src="@{/js/script.js}"></script>
+    </head>
+
+    <body>
+        <header class="header-full">
+            <div class="header-container">
+                <!-- Caixa para a Logo -->
+                <div class="logo-container">
+                    <img th:src="@{./img/construcao_civil.png}" alt="Logo Exata">
+                </div>
+            </div>
+        </header>
+        <h1>Módulo Operador</h1>
+        <div class="menu">
+            <a th:href="@{/clientes/cadastro}">Cadastrar Cliente</a>
+            <a th:href="@{/equipamentos/cadastro}">Cadastrar Equipamento</a>
+            <a th:href="@{/alugueis/cadastro}">Cadastrar Aluguel</a>
+        </div>
+        <br>
+        <div class="botoes-inferiores">
+            <a th:href="@{/index}" style="margin-left:20px; background:#006603; color:white; padding:10px 20px"
+               class="botao-voltar">Voltar</a>
+            <a th:href="@{/login}" style="margin-left:20px; background:#c506cc; color:white; padding:10px 20px;">Sair</a>
+
+        </div>
+    
+    <footer>Exata Locadora de Equipamentos!</footer>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <title>Cadastro de Categoria</title>
+        <link rel="stylesheet" th:href="@{/css/style.css}">
+        <script th:src="@{/js/script.js}"></script>
+    </head>
+    <body>
+        <div class="container">
+            <h2 style="color: purple;">Cadastrar Categoria</h2>
+
+            <form th:action="@{/categorias/gravar}" th:object="${categoria}" method="post">
+                <input type="hidden" th:field="*{id}" />
+
+                <label>Nome:</label>
+                <input type="text" th:field="*{nome}" required />
+                <div th:if="${#fields.hasErrors('nome')}" class="erro" th:errors="*{nome}"></div>
+
+<!--                <label>Valor (R$):</label>
+                <input type="number" th:field="*{valor}" required step="0.01" min="0.01" />
+                <div th:if="${#fields.hasErrors('valor')}" class="erro" th:errors="*{valor}"></div>-->
+
+                <div class="buttons" style="margin-top: 20px;">
+                    <button type="submit" style="background:#1b66ff; color:white; padding:10px 20px;">Cadastrar</button>
+
+                    <a th:href="@{/categorias/lista}" style="margin-left:20px; background:#c506cc; color:white; padding:10px 20px;">Lista de Categorias</a>
+
+                    <a th:href="@{/admin-home}" style="margin-left:20px; background:#006603; color:white; padding:10px 20px;">Voltar</a>
+                </div>
+            </form>
+        </div>
+
+        <footer style="text-align: center; margin-top: 30px; color: #aa0000;">
+            Exata Locadora de Equipamentos!
+        </footer>
+    </body>
+</html>

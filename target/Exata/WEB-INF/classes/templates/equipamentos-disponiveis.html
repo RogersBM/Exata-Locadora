@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Equipamentos Disponíveis</title>
+        <link rel="stylesheet" th:href="@{/css/style.css}">
+        <script th:src="@{/js/script.js}"></script>
+    </head>
+
+    <body>
+        <div class="container">
+            <h1>Equipamentos Disponíveis</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Categoria</th>
+                        <th>Descrição</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="equip : ${equipamentos}">
+                        <td th:text="${equip.nome}">Nome</td>
+                        <td th:text="${equip.categoria.nome}">Categoria</td>
+                        <td th:text="${equip.descricao}">Descrição</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <a href="index.html" class="botao-voltar">Voltar</a>
+        </div>
+        <footer>Exata Locadora de Equipamentos!</footer>
+    </body>
+
+</html>

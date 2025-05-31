@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <title>Lista de Clientes</title>
+        <link rel="stylesheet" th:href="@{/css/style.css}">
+        <script th:src="@{/js/script.js}"></script>
+    </head>
+    <body>
+        <div class="container">
+            <h2>Lista de Clientes</h2>
+            <div class="tabela-container" style="overflow-x: auto;">
+                <table border="1" class="tabela-clientes">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>CPF</th>
+                            <th>Identidade</th>
+                            <th>Contato</th>
+                            <th>Endereço</th>
+                            <th>Email</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="cli : ${clientes}">
+                            <td th:text="${cli.id}">1</td>
+                            <td th:text="${cli.nome}">Fulano</td>
+                            <td th:text="${cli.cpf}">000.000.000-00</td>
+                            <td th:text="${cli.identidade}">MG-1234567</td>
+                            <td th:text="${cli.contato}">(31) 99999-9999</td>
+                            <td th:text="${cli.endereco}">Rua Exemplo</td>
+                            <td th:text="${cli.email}">exemplo@email.com</td>
+                            <td>
+                                <a th:href="@{/clientes/editar/{id}(id=${cli.id})}">Editar</a> |
+                                <a th:href="@{/clientes/excluir/{id}(id=${cli.id})}" onclick="return confirm('Excluir este cliente?')">Excluir</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="buttons" style="margin-top: 20px;">
+                    <a th:href="@{/clientes/cadastro}" style="background:#1b66ff; color:white; padding:10px 20px;">Novo Cliente</a>
+                    <a th:href="@{/index}" style="margin-left:20px; background:#006603; color:white; padding:10px 20px;">Voltar</a>
+                </div>
+            </div>
+        </div>
+        <footer>Exata Locadora de Equipamentos!</footer>
+    </body>
+</html>

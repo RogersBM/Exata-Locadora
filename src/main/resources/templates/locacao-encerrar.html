@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Encerrar Aluguel</title>
+        <link rel="stylesheet" th:href="@{/css/style.css}">
+        <script th:src="@{/js/script.js}"></script>
+        
+    </head>
+    <body>
+        <div class="container">
+            <h1>Selecione um Aluguel para Encerrar</h1>
+
+            <!-- ✅ MENSAGEM DE SUCESSO -->
+            <div th:if="${mensagemSucesso}" class="alert alert-success">
+                <p th:text="${mensagemSucesso}"></p>
+            </div>
+
+            <!-- ⚠️ MENSAGEM DE ERRO -->
+            <div th:if="${mensagemErro}" class="alert alert-error">
+                <p th:text="${mensagemErro}"></p>
+            </div>
+
+            <!-- ℹ️ MENSAGEM DE INFORMAÇÃO -->
+            <div th:if="${mensagemInfo}" class="alert alert-info">
+                <p th:text="${mensagemInfo}"></p>
+            </div>
+
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Cliente</th>
+                        <th>Funcionário</th>
+                        <th>Equipamento</th>
+                        <th>Início</th>
+                        <th>Data Final</th>
+                        <th>Total a pagar</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="loc : ${locacoes}">
+                        <td th:text="${loc.id}"></td>
+                        <td th:text="${loc.cli.nome}"></td>
+                        <td th:text="${loc.func.nome}"></td>
+                        <td th:text="${loc.equip.nome}"></td>
+                        <td th:text="${#temporals.format(loc.dataInicio, 'dd/MM/yyyy')}"></td>
+                        <td th:text="${#temporals.format(loc.dataFim, 'dd/MM/yyyy')}"></td>
+                        <td th:text="${loc.total != null ? loc.total : 'R$ 0,00'}"></td>
+                        <td><a th:href="@{/alugueis/encerrar/{id}(id=${loc.id})}">Encerrar</a></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <br/>
+            <a href="/alugueis/lista">Voltar para listagem</a>
+        </div>
+    </body>
+</html>

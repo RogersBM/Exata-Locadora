@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Controle de Equipamentos</title>
+        <link rel="stylesheet" th:href="@{/css/style.css}">
+        <script th:src="@{/js/script.js}"></script>
+    </head>
+
+    <body>
+        <div class="container">
+            <h1>Lista de Equipamentos</h1>
+            <div class="tabela-container">
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Categoria</th>
+                            <th>Descrição</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="equip : ${equipamentos}">
+                            <td th:text="${equip.id}"></td>
+                            <td th:text="${equip.nome}"></td>
+                            <td th:text="${equip.categoria?.nome}"></td>
+                            <td th:text="${equip.descricao}"></td>
+                            <td th:text="${equip.alugado == 'S' ? 'Alugado' : 'Disponível'}"></td>
+                            <td>
+                                <a th:href="@{/equipamentos/editar/{id}(id=${equip.id})}">Editar</a> |
+                                <a th:href="@{/equipamentos/excluir/{id}(id=${equip.id})}" onclick="return confirm('Excluir?')">Excluir</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="buttons" style="margin-top: 20px;">
+                <a th:href="@{/equipamentos/cadastro}" style="background:#1b66ff; color:white; padding:10px 20px;">Cadastrar Equipamento</a>
+                <a th:href="@{/index}" style="margin-left:20px; background:#006603; color:white; padding:10px 20px;">Voltar</a>
+            </div>
+        </div>
+        <footer>Exata Locadora de Equipamentos!</footer>
+    </body>
+
+</html>

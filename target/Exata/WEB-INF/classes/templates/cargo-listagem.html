@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Listar Cargos</title>
+        <link rel="stylesheet" th:href="@{/css/style.css}">
+        <script th:src="@{/js/script.js}"></script>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Lista de Cargos</h1>
+            <div class="tabela-container">
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="cargo : ${cargos}">
+                            <td th:text="${cargo.id}">1</td>
+                            <td th:text="${cargo.nome}">Gerente</td>
+                            <td>
+                                <a th:href="@{/cargos/editar/{id}(id=${cargo.id})}">Editar</a> |
+                                <a th:href="@{/cargos/excluir/{id}(id=${cargo.id})}" onclick="return confirm('Excluir este cargo?')">Excluir</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="buttons" style="margin-top: 20px;">
+                    <a th:href="@{/cargos/cadastro}" style="background:#1b66ff; color:white; padding:10px 20px;">Cadastrar Cargo</a>
+                    <a th:href="@{/index}" style="margin-left:20px; background:#006603; color:white; padding:10px 20px;">Voltar</a>
+                </div>
+            </div>
+        </div>
+        <footer>Exata Locadora de Equipamentos!</footer>
+    </body>
+</html>

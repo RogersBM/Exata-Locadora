@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Cadastro de Cargo</title>
+        <link rel="stylesheet" th:href="@{/css/style.css}">
+        <script th:src="@{/js/script.js}"></script>
+    </head>
+    <body>
+        <div class="container">
+            <h2>Cadastro de Cargo</h2>
+            <form th:action="@{/cargos/gravar}" th:object="${cargo}" method="post">
+                <input type="hidden" th:field="*{id}" />
+                <label>Nome do Cargo:</label>
+                <input type="text" th:field="*{nome}" required />
+
+                <div class="buttons">
+                    <button type="submit" style="background:#1b66ff; color:white; padding:10px 20px;">Cadastrar</button>
+                    <button type="reset" style="margin-left:20px; background:#662c00; color:white; padding:10px 20px;">Limpar</button>
+                    <a th:href="@{/admin-home}" style="margin-left:20px; background:#006603; color:white; padding:10px 20px;" class="botao-voltar">Voltar</a>
+                    <a th:href="@{/cargos/lista}" style="background:#800080; color:white; padding:10px 20px; text-decoration:none; margin-left:10px;" class="botao">Listar Cargos</a>
+                </div>
+            </form>
+        </div>
+        <footer>Exata Locadora de Equipamentos!</footer>
+    </body>
+</html>

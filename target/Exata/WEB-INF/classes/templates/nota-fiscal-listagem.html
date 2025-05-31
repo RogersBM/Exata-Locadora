@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Listagem de Notas Fiscais</title>
+        <link rel="stylesheet" th:href="@{/css/style.css}">
+        <script th:src="@{/js/script.js}"></script>
+    </head>
+
+    <body>
+        <div class="container">
+            <h1>Listagem de Notas Fiscais</h1>
+
+            <div class="tabela-container">
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Número</th>
+                            <th>Valor (R$)</th>
+                            <th>Data de Emissão</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="nota : ${notas}">
+                            <td th:text="${nota.id}">1</td>
+                            <td th:text="${nota.numero}">NF123</td>
+                            <td th:text="${#numbers.formatDecimal(nota.valor, 1, 'COMMA', 2, 'POINT')}">300.00</td>
+                            <td th:text="${#temporals.format(nota.dataEmissao, 'dd/MM/yyyy')}">01/01/2025</td>
+                            <td>
+                                <a th:href="@{/notas-fiscais/editar/{id}(id=${nota.id})}">Editar</a> |
+                                <a th:href="@{/notas-fiscais/excluir/{id}(id=${nota.id})}" onclick="return confirm('Excluir?')">Excluir</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="buttons" style="margin-top: 20px;">
+                <a th:href="@{/notas-fiscais/cadastro}" style="background: #1b66ff; color: white; padding: 10px 20px; margin-right: 20px;">
+                    Cadastrar Nota Fiscal
+                </a>
+                <a th:href="@{/index}" style="background: #006603; color: white; padding: 10px 20px;">
+                    Voltar
+                </a>
+            </div>
+        </div>
+
+        <footer>Exata Locadora de Equipamentos!</footer>
+    </body>
+
+</html>
