@@ -5,7 +5,7 @@
         <title>Lista de Aluguéis</title>
         <link rel="stylesheet" th:href="@{/css/style.css}">
         <script th:src="@{/js/script.js}"></script>
-        
+
     </head>
     <body>
         <div class="container">
@@ -35,6 +35,8 @@
                             <th>Funcionário</th>
                             <th>Equipamento</th>
                             <th>Início</th>
+                            <th>Encerramento</th>
+                            <th>Total</th>  
                             <th>Ações</th>
                         </tr>
                     </thead>
@@ -45,14 +47,21 @@
                             <td th:text="${loc.func.nome}"></td>
                             <td th:text="${loc.equip.nome}"></td>
                             <td th:text="${#temporals.format(loc.dataInicio, 'dd/MM/yyyy')}"></td>
-                                                        
+
+                            <!-- ✅ Data de encerramento: -->
+                            <td th:text="${loc.dataFim != null ? #temporals.format(loc.dataFim, 'dd/MM/yyyy') : 'Aberto'}"></td>
+
+                            <!-- ✅ Valor total: -->
+                            <td th:text="${loc.total != null ? 'R$ ' + #numbers.formatDecimal(loc.total, 1, 'COMMA', 2, 'POINT') : 'R$ 0,00'}"></td>
+
                             <td>
                                 <a th:href="@{/alugueis/editar/{id}(id=${loc.id})}">Editar</a> |
                                 <a th:href="@{/alugueis/excluir/{id}(id=${loc.id})}" onclick="return confirm('Excluir?')">Excluir</a> |
-                                <a th:href="@{/alugueis/encerrar/{id}(id=${loc.id})}">Encerrar</a>
+                                <a th:href="@{/alugueis/encerrar-form/{id}(id=${loc.id})}">Encerrar</a>
                             </td>
                         </tr>
                     </tbody>
+
                 </table>
             </div>
 
@@ -62,6 +71,7 @@
             </div>
         </div>
 
-        <footer>Exata Locadora de Equipamentos!</footer>
+        <footer style="margin-top: 40px;">&copy; Exata Locadora de Equipamentos <br> @Rudy Rogers - Todos os direitos reservados.</footer>
+
     </body>
 </html>

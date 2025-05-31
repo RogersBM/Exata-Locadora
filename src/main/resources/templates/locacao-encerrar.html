@@ -48,7 +48,7 @@
                         <td th:text="${#temporals.format(loc.dataInicio, 'dd/MM/yyyy')}"></td>
                         <td th:text="${#temporals.format(loc.dataFim, 'dd/MM/yyyy')}"></td>
                         <td th:text="${loc.total != null ? loc.total : 'R$ 0,00'}"></td>
-                        <td><a th:href="@{/alugueis/encerrar/{id}(id=${loc.id})}">Encerrar</a></td>
+                        <td><a th:href="@{/alugueis/encerrar-form/{id}(id=${loc.id})}">Encerrar</a></td>
                     </tr>
                 </tbody>
             </table>

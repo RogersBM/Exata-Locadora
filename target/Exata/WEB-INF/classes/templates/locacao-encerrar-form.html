@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Encerrar Aluguel</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container">
+    <h2>Encerrar Aluguel</h2>
+    <form th:action="@{/alugueis/encerrar}" th:object="${locacao}" method="post">
+        <input type="hidden" th:field="*{id}"/>
+
+        <p><strong>Cliente:</strong> <span th:text="*{cli.nome}"></span></p>
+        <p><strong>Funcionário:</strong> <span th:text="*{func.nome}"></span></p>
+        <p><strong>Equipamento:</strong> <span th:text="*{equip.nome}"></span></p>
+        <p><strong>Data de Início:</strong> <span th:text="*{dataInicio}"></span></p>
+
+        <label for="dataFim">Data de Encerramento:</label>
+        <input type="date" th:field="*{dataFim}" required/>
+
+        <div class="buttons">
+            <button type="submit">Encerrar</button>
+            <a th:href="@{/alugueis/encerrar}" class="botao-voltar">Cancelar</a>
+        </div>
+    </form>
+</div>
+</body>
+</html>
